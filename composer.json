@@ -1,9 +1,25 @@
 {
   "name": "y0f/image-to-ascii",
+  "type": "library",
   "description": "Converts images to ASCII art with HTML and inline CSS",
+  "keywords": [
+    "php",
+    "laravel",
+    "image",
+    "ascii",
+    "html",
+    "css",
+    "converter"
+  ],
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Y0f\\ImageToAscii\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
     }
   },
   "extra": {
@@ -12,6 +28,15 @@
         "Y0f\\ImageToAscii\\ImageToAsciiServiceProvider"
       ]
     }
+  },
+  "authors": [
+    {
+      "name": "y0f",
+      "email": "y0f@no-reply.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1|^8.2"
   },
   "minimum-stability": "dev",
   "prefer-stable": true
