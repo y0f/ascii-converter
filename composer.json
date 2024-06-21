@@ -1,0 +1,18 @@
+{
+  "name": "y0f/image-to-ascii",
+  "description": "Converts images to ASCII art with HTML and inline CSS",
+  "autoload": {
+    "psr-4": {
+      "Y0f\\ImageToAscii\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Y0f\\ImageToAscii\\ImageToAsciiServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
