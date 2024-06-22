@@ -10,11 +10,14 @@ It is pretty useless, but it was fun to build.
 
 ### Input
 
+![input image](https://github.com/y0f/html-css-ascii-converter/assets/70378641/ed5ffea5-210a-4fba-b0d5-be8132f22360)
+
 
 
 ### Output
 
-![Output Image](https://github.com/y0f/html-css-ascii-converter/assets/70378641/0cfb710d-155b-4b64-937e-46a7a1c8e07d)
+![output image](https://github.com/y0f/html-css-ascii-converter/assets/70378641/b25143e2-0782-4caa-aac1-01aff6b08588)
+
 
 ## Installation
 
