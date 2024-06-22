@@ -32,24 +32,17 @@ class AsciiController extends Controller
 
         try {
             $imagePath = $validatedData['image']->path();
-            $characters = $validatedData['characters'] ?? '#$%0=';
-            $fontSize = $validatedData['font_size'] ?? 8;
-            $newWidth = $validatedData['new_width'] ?? 100;
-            $newHeight = $validatedData['new_height'] ?? 100;
-            $lineHeight = $validatedData['line_height'] ?? 7;
-            $letterSpacing = $validatedData['letter_spacing'] ?? 3.0;
-            $backgroundColor = $validatedData['background_color'] ?? '#000000';
+            $options = [
+                'characters' => $validatedData['characters'] ?? '#$%0=',
+                'font_size' => $validatedData['font_size'] ?? 8,
+                'new_width' => $validatedData['new_width'] ?? 100,
+                'new_height' => $validatedData['new_height'] ?? 100,
+                'line_height' => $validatedData['line_height'] ?? 7,
+                'letter_spacing' => $validatedData['letter_spacing'] ?? 3.0,
+                'background_color' => $validatedData['background_color'] ?? '#000000'
+            ];
 
-            $asciiArt = $this->convertToAsciiArt(
-                $imagePath, 
-                $characters, 
-                $fontSize, 
-                $newWidth, 
-                $newHeight, 
-                $lineHeight, 
-                $letterSpacing, 
-                $backgroundColor
-            );
+            $asciiArt = $this->convertToAsciiArt($imagePath, ...array_values($options));
 
             return view('image-to-ascii::view_image', compact('asciiArt'));
         } catch (Exception $e) {

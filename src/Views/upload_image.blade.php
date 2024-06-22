@@ -19,26 +19,29 @@
                 <label for="image" class="block text-sm font-medium mb-2 text-gray-300">Select image:</label>
                 <input type="file" name="image" id="image"
                     class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2"
-                    required>
+                    required accept="image/*">
             </div>
 
             <div>
                 <label for="characters" class="block text-sm font-medium mb-2 text-gray-300">Characters (default: abcdef):</label>
                 <input type="text" name="characters" id="characters"
-                    class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
+                    class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2"
+                    maxlength="255">
             </div>
 
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label for="font_size" class="block text-sm font-medium mb-2 text-gray-300">Font Size (default: 8):</label>
                     <input type="number" name="font_size" id="font_size" value="8"
-                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2"
+                        min="1" max="100" required>
                 </div>
 
                 <div>
                     <label for="new_width" class="block text-sm font-medium mb-2 text-gray-300">New Width (default: 100):</label>
                     <input type="number" name="new_width" id="new_width" value="100"
-                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2"
+                        min="1" max="1000" required>
                 </div>
             </div>
 
@@ -46,13 +49,15 @@
                 <div>
                     <label for="new_height" class="block text-sm font-medium mb-2 text-gray-300">New Height (default: 100):</label>
                     <input type="number" name="new_height" id="new_height" value="100"
-                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2"
+                        min="1" max="1000" required>
                 </div>
 
                 <div>
                     <label for="line_height" class="block text-sm font-medium mb-2 text-gray-300">Line Height (default: 7):</label>
                     <input type="number" name="line_height" id="line_height" value="7"
-                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2"
+                        min="1" max="100" required>
                 </div>
             </div>
 
@@ -60,7 +65,8 @@
                 <div>
                     <label for="letter_spacing" class="block text-sm font-medium mb-2 text-gray-300">Letter Spacing (default: 3.0):</label>
                     <input type="number" step="0.1" name="letter_spacing" id="letter_spacing" value="3.0"
-                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2"
+                        min="0" max="10" required>
                 </div>
 
                 <div>
