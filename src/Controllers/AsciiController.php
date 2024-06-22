@@ -20,7 +20,7 @@ class AsciiController extends Controller
     public function showAsciiImage(Request $request)
     {
         $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png|max:2048',
             'characters' => 'nullable|string|max:255',
             'font_size' => 'nullable|integer|min:1|max:100',
             'new_width' => 'nullable|integer|min:1|max:1000',
