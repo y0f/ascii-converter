@@ -41,18 +41,27 @@ trait ImageToAsciiTrait
     }
 
     /**
-     * Resizes the loaded image to a specified width while maintaining aspect ratio.
+     * Resizes the loaded image to specified width and height while maintaining aspect ratio.
      *
-     * @param int $newWidth New width for the resized image.
+     * @param int|null $newWidth New width for the resized image.
+     * @param int|null $newHeight New height for the resized image.
      * @return \GdImage The resized image resource.
      * @throws Exception
      */
-    private function resizeImage(int $newWidth): \GdImage
+    private function resizeImage(?int $newWidth, ?int $newHeight): \GdImage
     {
-        $aspectRatio = $this->height / $this->width;
-        $newHeight = (int) ($newWidth * $aspectRatio);
-        $resizedImage = imagecreatetruecolor($newWidth, $newHeight);
+        if ($newWidth === null && $newHeight === null) {
+            $newWidth = $this->width;
+            $newHeight = $this->height;
+        } elseif ($newWidth === null) {
+            $aspectRatio = $this->width / $this->height;
+            $newWidth = (int)($newHeight * $aspectRatio);
+        } elseif ($newHeight === null) {
+            $aspectRatio = $this->height / $this->width;
+            $newHeight = (int)($newWidth * $aspectRatio);
+        }
 
+        $resizedImage = imagecreatetruecolor($newWidth, $newHeight);
         if (!$resizedImage) {
             throw new Exception('Error creating image');
         }
@@ -115,7 +124,8 @@ trait ImageToAsciiTrait
      *
      * @param string $characters Set of characters to use for the ASCII conversion.
      * @param int $fontSize Font size for the ASCII representation.
-     * @param int $newWidth New width for the resized image.
+     * @param int|null $newWidth New width for the resized image.
+     * @param int|null $newHeight New height for the resized image.
      * @param int $lineHeight Line height for the ASCII representation.
      * @param float $letterSpacing Letter spacing for the ASCII representation.
      * @param string $backgroundColor Background color for the ASCII representation.
@@ -124,13 +134,14 @@ trait ImageToAsciiTrait
     private function convertImageToAscii(
         string $characters, 
         int $fontSize, 
-        int $newWidth,
+        ?int $newWidth,
+        ?int $newHeight,
         int $lineHeight = 7, 
         float $letterSpacing = 3.0,
         string $backgroundColor = "#000000"
     ): string
     {
-        $resizedImage = $this->resizeImage($newWidth);
+        $resizedImage = $this->resizeImage($newWidth, $newHeight);
         $asciiArt = $this->convertToAscii($resizedImage, $characters);
 
         $styles = "line-height: {$lineHeight}px; letter-spacing: {$letterSpacing}px;";
@@ -147,7 +158,8 @@ trait ImageToAsciiTrait
      * @param string $imagePath Path to the image file.
      * @param string $characters Set of characters to use for the ASCII conversion.
      * @param int $fontSize Font size for the ASCII representation.
-     * @param int $newWidth New width for the resized image.
+     * @param int|null $newWidth New width for the resized image.
+     * @param int|null $newHeight New height for the resized image.
      * @param int $lineHeight Line height for the ASCII representation.
      * @param float $letterSpacing Letter spacing for the ASCII representation.
      * @param string $backgroundColor Background color for the ASCII representation.
@@ -156,16 +168,16 @@ trait ImageToAsciiTrait
      */
     public function convertToAsciiArt(
         string $imagePath, 
-        string $characters = "y", 
+        string $characters = "y0f", 
         int $fontSize = 8, 
-        int $newWidth = 100,
+        ?int $newWidth = null,
+        ?int $newHeight = null,
         int $lineHeight = 7, 
         float $letterSpacing = 3.0,
         string $backgroundColor = "#000000"
     ): string
     {
         $this->loadImage($imagePath);
-        return $this->convertImageToAscii($characters, $fontSize, $newWidth, $lineHeight, $letterSpacing, $backgroundColor);
+        return $this->convertImageToAscii($characters, $fontSize, $newWidth, $newHeight, $lineHeight, $letterSpacing, $backgroundColor);
     }
 }
-

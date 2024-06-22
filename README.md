@@ -10,7 +10,7 @@ It has little to no usecases, unless you like ASCII :P.
 
 ### Input
 
-![Input Image](https://github.com/y0f/html-css-ascii-converter/assets/70378641/52df0461-74a2-48fe-a865-183c2db8ca9f)
+
 
 ### Output
 

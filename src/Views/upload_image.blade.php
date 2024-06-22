@@ -1,75 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Image</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-100 p-8">
+<body class="bg-gray-900 text-gray-200 font-sans p-8">
 
-    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-        <h1 class="text-2xl font-bold mb-4 text-center">Upload Image to Convert to ASCII Art</h1>
+    <div class="max-w-md mx-auto p-6 bg-gray-800 rounded-lg shadow-lg space-y-6">
+        <h1 class="text-2xl font-bold mb-6 text-center text-purple-400">Upload Image to Convert to ASCII Art</h1>
 
-        <form action="/ascii-image" method="POST" enctype="multipart/form-data">
+        <form action="/ascii-image" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
-            <div class="mb-4">
-                <label for="image" class="block text-sm font-medium text-gray-700">Select image:</label>
+            <div>
+                <label for="image" class="block text-sm font-medium mb-2 text-gray-300">Select image:</label>
                 <input type="file" name="image" id="image"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2"
                     required>
             </div>
 
-            <div class="mb-4">
-                <label for="characters" class="block text-sm font-medium text-gray-700">Characters (default:
-                    abcdef):</label>
-                <input type="text" name="characters" id="characters" value="abcdef"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <div>
+                <label for="characters" class="block text-sm font-medium mb-2 text-gray-300">Characters (default: abcdef):</label>
+                <input type="text" name="characters" id="characters"
+                    class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
             </div>
 
-            <div class="grid grid-cols-2 gap-x-4">
-                <div class="mb-4">
-                    <label for="font_size" class="block text-sm font-medium text-gray-700">Font Size (default:
-                        8):</label>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="font_size" class="block text-sm font-medium mb-2 text-gray-300">Font Size (default: 8):</label>
                     <input type="number" name="font_size" id="font_size" value="8"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
                 </div>
 
-                <div class="mb-4">
-                    <label for="new_width" class="block text-sm font-medium text-gray-700">New Width (default:
-                        100):</label>
+                <div>
+                    <label for="new_width" class="block text-sm font-medium mb-2 text-gray-300">New Width (default: 100):</label>
                     <input type="number" name="new_width" id="new_width" value="100"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-x-4">
-                <div class="mb-4">
-                    <label for="line_height" class="block text-sm font-medium text-gray-700">Line Height (default:
-                        7):</label>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="new_height" class="block text-sm font-medium mb-2 text-gray-300">New Height (default: 100):</label>
+                    <input type="number" name="new_height" id="new_height" value="100"
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
+                </div>
+
+                <div>
+                    <label for="line_height" class="block text-sm font-medium mb-2 text-gray-300">Line Height (default: 7):</label>
                     <input type="number" name="line_height" id="line_height" value="7"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                </div>
-
-                <div class="mb-4">
-                    <label for="letter_spacing" class="block text-sm font-medium text-gray-700">Letter Spacing (default:
-                        3.0):</label>
-                    <input type="number" step="0.1" name="letter_spacing" id="letter_spacing" value="3.0"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
                 </div>
             </div>
 
-            <div class="mb-4">
-                <label for="background_color" class="block text-sm font-medium text-gray-700">Background Color (default:
-                    #000000):</label>
-                <input type="color" name="background_color" id="background_color" value="#000000"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label for="letter_spacing" class="block text-sm font-medium mb-2 text-gray-300">Letter Spacing (default: 3.0):</label>
+                    <input type="number" step="0.1" name="letter_spacing" id="letter_spacing" value="3.0"
+                        class="block w-full bg-gray-700 border border-gray-600 text-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 p-2">
+                </div>
+
+                <div>
+                    <label for="background_color" class="block text-sm font-medium mb-2 text-gray-300">Background Color (default: #000000):</label>
+                    <input type="color" name="background_color" id="background_color" value="#000000"
+                        class="p-1 h-10 w-14 block bg-gray-700 border border-gray-600 cursor-pointer rounded-lg focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                </div>
             </div>
 
             <div class="text-center">
                 <button type="submit"
-                    class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50">Convert
-                    to ASCII Art</button>
+                    class="bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
+                    Convert to ASCII Art
+                </button>
             </div>
         </form>
     </div>
