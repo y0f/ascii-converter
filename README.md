@@ -1,7 +1,7 @@
 # Image to ASCII Converter
 
-Laravel package to convert images into ASCII art using HTML and inline CSS. This package is an old project I created that I turned into a Packagist package.
-It is pretty useless, but it was fun to build. 
+Simple laravel package to convert images into ASCII art using HTML and inline CSS. This package is an old project I created that I turned into a Packagist package.
+It is pretty useless, but it was fun to build.
 
 ## Features
 
