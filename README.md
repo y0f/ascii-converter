@@ -1,7 +1,5 @@
 # Image to ASCII Converter
 
-Simple hobby project turned into a tiny laravel package to convert images into ASCII art using HTML and inline CSS.
-
 ## Features
 
 - **Upload Images**: Convert uploaded images to ASCII art.
