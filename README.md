@@ -1,6 +1,6 @@
 # Image to ASCII Converter
 
-(I'm aware the code isn't optimal and it should be in a service class and not a trait, but it does the job, and I don't plan on expanding this tiny package.)
+(I'm aware the code in the trait should be in a service class and not a trait, but it does the job, and I don't plan on expanding this tiny package.)
 
 ## Features
 
