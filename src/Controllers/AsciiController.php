@@ -4,13 +4,11 @@ namespace Y0f\ImageToAscii\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Y0f\ImageToAscii\ImageToAsciiTrait;
+use Y0f\ImageToAscii\ImageToAsciiConverter;
 use Exception;
 
 class AsciiController extends Controller
 {
-    use ImageToAsciiTrait;
-
     /**
      * Show the ASCII image generated from the uploaded image.
      *
@@ -32,6 +30,8 @@ class AsciiController extends Controller
 
         try {
             $imagePath = $validatedData['image']->path();
+            
+            // Options for ASCII conversion
             $options = [
                 'characters' => $validatedData['characters'] ?? '#$%0=',
                 'font_size' => $validatedData['font_size'] ?? 8,
@@ -42,7 +42,8 @@ class AsciiController extends Controller
                 'background_color' => $validatedData['background_color'] ?? '#000000'
             ];
 
-            $asciiArt = $this->convertToAsciiArt($imagePath, ...array_values($options));
+            $converter = new ImageToAsciiConverter();
+            $asciiArt = $converter->convertToAsciiArt($imagePath, ...array_values($options));
 
             return view('image-to-ascii::view_image', compact('asciiArt'));
         } catch (Exception $e) {
@@ -60,3 +61,4 @@ class AsciiController extends Controller
         return view('image-to-ascii::upload_image');
     }
 }
+
