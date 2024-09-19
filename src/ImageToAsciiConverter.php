@@ -3,14 +3,11 @@
 namespace Y0f\ImageToAscii;
 
 use Exception;
-
 /**
- * Trait ImageToAscii
- *
- * A trait for converting images into an ASCII representation.
+ * A class for converting images into an ASCII representation.
  * Made by github.com/y0f
  */
-trait ImageToAsciiTrait
+class ImageToAsciiConverter
 {
     private $image;
     private $width;
@@ -22,7 +19,7 @@ trait ImageToAsciiTrait
      * @param string $imagePath Path to the image file.
      * @throws Exception
      */
-    private function loadImage(string $imagePath): void
+    public function loadImage(string $imagePath): void
     {
         $type = exif_imagetype($imagePath);
         switch ($type) {
@@ -48,7 +45,7 @@ trait ImageToAsciiTrait
      * @return \GdImage The resized image resource.
      * @throws Exception
      */
-    private function resizeImage(?int $newWidth, ?int $newHeight): \GdImage
+    public function resizeImage(?int $newWidth, ?int $newHeight): \GdImage
     {
         if ($newWidth === null && $newHeight === null) {
             $newWidth = $this->width;
@@ -79,7 +76,7 @@ trait ImageToAsciiTrait
      * @param string $characters Set of characters to use for the ASCII conversion.
      * @return string HTML representation of ASCII art.
      */
-    private function convertToAscii(\GdImage $resizedImage, string $characters): string
+    public function convertToAscii(\GdImage $resizedImage, string $characters): string
     {
         $width = imagesx($resizedImage);
         $height = imagesy($resizedImage);
@@ -104,7 +101,7 @@ trait ImageToAsciiTrait
      * @param string $characters Set of characters to use for the ASCII conversion.
      * @return string HTML span element for ASCII character.
      */
-    private function getPixelAsAscii(\GdImage $resizedImage, int $w, int $h, string $characters): string
+    public function getPixelAsAscii(\GdImage $resizedImage, int $w, int $h, string $characters): string
     {
         $rgb = ImageColorAt($resizedImage, $w, $h);
         $r = ($rgb >> 16) & 0xFF;
@@ -131,7 +128,7 @@ trait ImageToAsciiTrait
      * @param string $backgroundColor Background color for the ASCII representation.
      * @return string Complete HTML representation of the ASCII art.
      */
-    private function convertImageToAscii(
+    public function convertImageToAscii(
         string $characters, 
         int $fontSize, 
         ?int $newWidth,
@@ -181,3 +178,4 @@ trait ImageToAsciiTrait
         return $this->convertImageToAscii($characters, $fontSize, $newWidth, $newHeight, $lineHeight, $letterSpacing, $backgroundColor);
     }
 }
+
