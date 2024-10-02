@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Image</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <!--  I did this out of being lazy, and only really the trait matters. Configure tailwind correctly in your laravel app. -->
 </head>
 
 <body class="bg-gray-900 text-gray-200 font-sans p-8">
